@@ -1,0 +1,23 @@
+<h1>Listing trip_sub_types</h1>
+
+<table>
+  <tr>
+    <th>Subtype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trip_sub_types.each do |trip_sub_type| %>
+  <tr>
+    <td><%= trip_sub_type.subtype %></td>
+    <td><%= link_to 'Show', trip_sub_type %></td>
+    <td><%= link_to 'Edit', edit_trip_sub_type_path(trip_sub_type) %></td>
+    <td><%= link_to 'Destroy', trip_sub_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trip sub type', new_trip_sub_type_path %>

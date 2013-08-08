@@ -1,0 +1,8 @@
+<%= simple_form_for(@trip) do |f| %>
+
+    <%= f.input :date %><br />
+    <%= f.input :title %><br />
+    <%= f.input :comment %><br />
+    <%= f.association :fellowships %><br />
+    <%= f.button :submit %>
+<% end %>

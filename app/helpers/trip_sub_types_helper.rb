@@ -1,0 +1,2 @@
+module TripSubTypesHelper
+end

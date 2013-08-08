@@ -1,0 +1,21 @@
+<%= form_for(@trip_sub_type) do |f| %>
+  <% if @trip_sub_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip_sub_type.errors.count, "error") %> prohibited this trip_sub_type from being saved:</h2>
+
+      <ul>
+      <% @trip_sub_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subtype %><br />
+    <%= f.text_field :subtype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

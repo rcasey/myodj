@@ -1,0 +1,10 @@
+My Work Log on Outdoor Journal project
+
+27-july-2013
+    - replaced the join table btw Trips & Partners with has_many...through construct. Good Railscast #47 explains
+    that it is more flexible. Also Railscast #196 & 197 on Nested Model Forms are helping...but aren't exactly
+    what I want, since I'd like to have a picklist of Partners from which I can add to a Trip.
+    
+29-july-2013
+    - see Railscast #234, SimpleForm. This gem looks like it will handle the association I need
+    to include Partners on the Trips edit form.
