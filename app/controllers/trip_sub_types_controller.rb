@@ -25,6 +25,7 @@ class TripSubTypesController < ApplicationController
   # GET /trip_sub_types/new.json
   def new
     @trip_sub_type = TripSubType.new
+    @trip_types = TripType.all
 
     respond_to do |format|
       format.html # new.html.erb

@@ -25,6 +25,8 @@ class TripsController < ApplicationController
   # GET /trips/new.json
   def new
     @trip = Trip.new
+    
+    @partners = Partner.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class TripsController < ApplicationController
   # GET /trips/1/edit
   def edit
     @trip = Trip.find(params[:id])
+    @partners = @trip.partners
   end
 
   # POST /trips
@@ -42,11 +45,26 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(params[:trip])
 
-    respond_to do |format|
-      if @trip.save
+    if @trip.save
+      @partners = params[:partners]
+      
+      @partners.each do |p|
+        
+        @fellowship = Fellowship.new
+        
+        @fellowship.partner_id = p
+        @fellowship.trip = @trip
+        
+        @fellowship.save
+      end
+
+      respond_to do |format|
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render json: @trip, status: :created, location: @trip }
-      else
+      end
+      
+    else
+      respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end

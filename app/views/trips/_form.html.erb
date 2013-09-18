@@ -3,6 +3,6 @@
     <%= f.input :date %><br />
     <%= f.input :title %><br />
     <%= f.input :comment %><br />
-    <%= f.association :fellowships %><br />
+    <%= select_tag "partners", options_from_collection_for_select( @partners, :id, :name), :multiple => true %>
     <%= f.button :submit %>
 <% end %>

@@ -3,4 +3,8 @@ class Partner < ActiveRecord::Base
   
   has_many :fellowships
   has_many :trips, :through => :fellowships
+  
+  def name
+    fname + " " + lname
+  end
 end
