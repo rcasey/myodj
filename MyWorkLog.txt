@@ -8,3 +8,7 @@ My Work Log on Outdoor Journal project
 29-july-2013
     - see Railscast #234, SimpleForm. This gem looks like it will handle the association I need
     to include Partners on the Trips edit form.
+    
+17-sept-2013
+    - progress thanks to Ryan at Hacker Hour...
+    

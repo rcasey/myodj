@@ -4,8 +4,8 @@
   <tr>
     <th>Date</th>
     <th>Title</th>
+    <th>Destination</th>
     <th>Comment</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,6 +14,7 @@
   <tr>
     <td><%= trip.date %></td>
     <td><%= trip.title %></td>
+    <td><%= trip.destination.name if trip.destination%></td>
     <td><%= trip.comment %></td>
     <td><%= link_to 'Show', trip %></td>
     <td><%= link_to 'Edit', edit_trip_path(trip) %></td>

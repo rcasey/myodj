@@ -3,6 +3,10 @@
     <%= f.input :date %><br />
     <%= f.input :title %><br />
     <%= f.input :comment %><br />
-    <%= select_tag "partners", options_from_collection_for_select( @partners, :id, :name), :multiple => true %>
+    <%= select_tag "partners", options_from_collection_for_select( @partners, :id, :name, @selected_partners), :multiple => true %>
+    <%= @selected_partners %>
+    <%= f.association :destination %>
+    <%= @selected_partner %>
+
     <%= f.button :submit %>
 <% end %>

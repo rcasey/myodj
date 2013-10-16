@@ -14,7 +14,7 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trip }
@@ -27,6 +27,11 @@ class TripsController < ApplicationController
     @trip = Trip.new
     
     @partners = Partner.all
+    @selected_partners = []
+    
+    @destinations = Destination.all
+    @selected_destinations = []
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,7 +42,19 @@ class TripsController < ApplicationController
   # GET /trips/1/edit
   def edit
     @trip = Trip.find(params[:id])
-    @partners = @trip.partners
+    @partners = Partner.all
+    
+    @selected_partners = []
+    @trip.partners.each do |p|
+      @selected_partners << p.id
+    end
+    
+    @destinations = Destination.all
+    if @trip.destination
+      @selected_destinations = @trip.destination.id
+    else
+      @selected_destinations = []
+    end
   end
 
   # POST /trips
@@ -78,6 +95,22 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.update_attributes(params[:trip])
+
+        @partners = params[:partners]
+        @trip.fellowships.each do |f|
+          f.destroy
+        end
+        
+        @partners.each do |p|
+          
+          @fellowship = Fellowship.new
+          
+          @fellowship.partner_id = p
+          @fellowship.trip = @trip
+          
+          @fellowship.save
+        end
+      
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
         format.json { head :no_content }
       else
